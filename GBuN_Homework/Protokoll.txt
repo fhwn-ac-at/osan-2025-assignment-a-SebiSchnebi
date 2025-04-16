@@ -1,0 +1,35 @@
+Message Queue
+
+In der Einheit haben wir gelernt, wie man eine Message Queue erstellt. Um diese zu verwenden muss man den mqueue.h Header verwenden. 
+Mit der Message Queue ist die Kommunikation zwischen Eltern und Kinderprozesse möglich. 
+Funktionen:
+mq_open(): Öffnet eine Message Queue und gibt einen Deskriptor zurück, über den Nachrichten gesendet und empfangen werden können.
+mq_send(): Sendet eine Nachricht an die Queue. In der Übung wurde eine Nachricht mit einer zufälligen Arbeitszeit an die Workerprozesse gesendet.
+mq_receive(): Empfängt Nachrichten von der Queue. In der Übung empfingen die Workerprozesse die Nachricht, die die Arbeitszeit angab, und führten dann die Aufgabe aus.
+
+Am Ende des Programms muss die Message Queue wieder geschlossen werden. Zusätzlich kann man sie auch aus dem System löschen mit dem Befehl mq_unlink().
+--------------------------------------------------------------------------
+
+Forking
+
+Mit dem Befehl Fork() kann man einen neuen Prozess starten. Dieser ist dann ein Kinderprozess. Diese "Kinder" können dann mittels der Message Queue mit ihrem Elternprozess kommunizieren.
+--------------------------------------------------------------------------
+
+Kommandline Arguments
+
+Mit der getopt() Funktion kann man Benutzereingaben aus der Kommandline verarbeiten. In unserem Beispiel kann man mit den Präfixen -w, -t, und -s Parameter für das
+Programm bestimmen.
+--------------------------------------------------------------------------
+
+Warten auf Kindprozesse mit wait()
+
+Der Elternprozess musste sicherstellen, dass er auf alle seine Kindprozesse wartet, bevor er die Message Queue schließt und das Programm beendet. 
+Dies wurde mit der wait()-Funktion erreicht.
+wait() ermöglichte es dem Elternprozess, zu überprüfen, ob die Kindprozesse erfolgreich abgeschlossen wurden.
+--------------------------------------------------------------------------
+
+In dieser Übung habe ich mein Verständnis für die Interprozesskommunikation (IPC) unter Unix-basierten Systemen vertieft, 
+mit besonderem Fokus auf die Verwendung von Message Queues und das Erzeugen von Prozessen mittels fork(). 
+Ich habe gelernt, wie man Prozesse erstellt und verwaltet, und wie sie über Nachrichten miteinander kommunizieren können. 
+Zusätzlich habe ich geübt, wie man Programme durch Kommandozeilenargumente flexibel steuert und wie eine saubere 
+Fehlerbehandlung in diesen Kontext integriert wird.
